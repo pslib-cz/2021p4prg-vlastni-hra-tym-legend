@@ -4,24 +4,19 @@ using UnityEngine;
 
 public class CharacterScript : MonoBehaviour
 {
-
-    public float maxRunSpeed = 5;
     public float jumpSpeed = 5;
     public int crystals = 0;
 
     private Rigidbody2D _rb;
     private Collider2D _coll;
-    private SpriteRenderer _sr;
     private Animator _anim;
     private bool _onGround = false;
-
 
     // Start is called before the first frame update
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
         _coll = GetComponent<Collider2D>();
-        _sr = GetComponent<SpriteRenderer>();
         _anim = GetComponent<Animator>();
     }
 
