@@ -11,24 +11,31 @@ public class CharacterScript : MonoBehaviour
     public TrapSpawner TrapSpawner;
     public bool isDead = false;
     public Collider2D coll;
-    public bool onGround = false;
     public int fishes = 0;
     public Text fishesText;
+    private Animator _anim;
+    public bool onGround = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        _anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        onGround = coll.IsTouchingLayers();
         if (!isDead)
         {
+            onGround = coll.IsTouchingLayers();
             if (Input.GetKey(KeyCode.Space))
             {
+                _anim.SetBool("JetpackOn", true);
                 rb.AddForce(new Vector2(0, upSpeed * (Time.timeScale)), ForceMode2D.Force);
+            }
+            else
+            {
+                _anim.SetBool("JetpackOn", false);
             }
         }
     }

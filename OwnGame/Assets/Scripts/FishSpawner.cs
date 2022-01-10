@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FishSpawner : MonoBehaviour
 {
-    private float secondsLeft = 0;
+    private float secondsLeft = 5;
     public float spawnSpeed = 10;
     public float spawnChance = 40;
     public GameObject obstPrefab;
@@ -25,7 +25,7 @@ public class FishSpawner : MonoBehaviour
 
             if (temp <= spawnChance && secondsLeft <= 0)
             {
-                Instantiate(obstPrefab, new Vector3(20, Random.Range(-4, 4), 0), Quaternion.identity, transform);
+                Instantiate(obstPrefab, new Vector3(20f, Random.Range(-4, 4), 0), Quaternion.identity, transform);
                 secondsLeft = spawnSpeed;
             }
         }

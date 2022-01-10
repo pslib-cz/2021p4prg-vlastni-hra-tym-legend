@@ -5,7 +5,7 @@ using UnityEngine;
 public class StartScript : MonoBehaviour
 {
     public Transform t;
-    public float speed = 0.7f;
+    public float speed = 0.03f;
 
     // Start is called before the first frame update
     void Start()
@@ -16,7 +16,7 @@ public class StartScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        t.Translate(-speed * Time.deltaTime, 0, 0);
+        t.Translate(-speed * 0.1f, 0, 0);
 
         if (t.transform.position.x < -13f)
         {

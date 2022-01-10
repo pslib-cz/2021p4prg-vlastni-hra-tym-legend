@@ -21,21 +21,21 @@ public class Background : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!character.isDead || (character.isDead && !character.onGround))
+        if (!character.isDead)
         {
             t.Translate(-speed * Time.deltaTime, 0, 0);
             Time.timeScale += Time.deltaTime * difficulty * 0.002f;
 
-            if (t.transform.position.x < -16.38f)
+            if (t.transform.position.x < -18.91f)
             {
                 t.transform.position = new Vector3(0, 0, 10f);
             }
             score += Time.deltaTime * 5f;
             scoreText.text = Mathf.Round(score).ToString() + " m";
         }
-        else if (character.isDead && character.onGround)
+        else
         {
-            SceneManager.LoadScene("StartScene");
+            SceneManager.LoadScene("DeadScene");
         }
     }
 }

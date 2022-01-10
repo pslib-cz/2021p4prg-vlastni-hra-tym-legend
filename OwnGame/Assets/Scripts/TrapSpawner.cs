@@ -30,12 +30,5 @@ public class TrapSpawner : MonoBehaviour
                 secondsLeft = spawnSpeed;
             }
         }
-        else
-        {
-            foreach (Transform item in transform)
-            {
-                Destroy(item.gameObject);
-            }
-        }
     }
 }
