@@ -16,10 +16,15 @@ public class CharacterScript : MonoBehaviour
     private Animator _anim;
     public bool onGround = false;
 
+    public ParticleSystem particleSystem;
+
+    private ParticleSystem.EmissionModule emission;
+
     // Start is called before the first frame update
     void Start()
     {
         _anim = GetComponent<Animator>();
+        emission = particleSystem.emission;
     }
 
     // Update is called once per frame
@@ -32,10 +37,12 @@ public class CharacterScript : MonoBehaviour
             {
                 _anim.SetBool("JetpackOn", true);
                 rb.AddForce(new Vector2(0, upSpeed * (Time.timeScale)), ForceMode2D.Force);
+                emission.enabled = true;
             }
             else
             {
                 _anim.SetBool("JetpackOn", false);
+                emission.enabled = false;
             }
         }
     }
