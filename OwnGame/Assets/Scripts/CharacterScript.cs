@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CharacterScript : MonoBehaviour
@@ -15,6 +16,8 @@ public class CharacterScript : MonoBehaviour
     public Text fishesText;
     private Animator _anim;
     public bool onGround = false;
+    public JetpackScript JetpackScript;
+    public CollectScript CollectScript;
 
     public ParticleSystem particleSystem;
 
@@ -35,14 +38,17 @@ public class CharacterScript : MonoBehaviour
             onGround = coll.IsTouchingLayers();
             if (Input.GetKey(KeyCode.Space))
             {
-                _anim.SetBool("JetpackOn", true);
+                if (GameObject.FindGameObjectsWithTag("Pause").Length == 0)
+                {
+                    JetpackScript.PlaySound();
+                }
                 rb.AddForce(new Vector2(0, upSpeed * (Time.timeScale)), ForceMode2D.Force);
                 emission.enabled = true;
             }
             else
             {
-                _anim.SetBool("JetpackOn", false);
                 emission.enabled = false;
+                JetpackScript.StopSound();
             }
         }
     }
@@ -52,9 +58,11 @@ public class CharacterScript : MonoBehaviour
         if (collider.gameObject.CompareTag("Trap"))
         {
             isDead = true;
+            SceneManager.LoadScene("DeadScene");
         }
         if (collider.gameObject.CompareTag("Fish"))
         {
+            CollectScript.PlaySound();
             fishes++;
             fishesText.text = fishes.ToString();
             Destroy(collider.gameObject);

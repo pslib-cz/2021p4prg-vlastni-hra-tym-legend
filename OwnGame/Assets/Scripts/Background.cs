@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Background : MonoBehaviour
@@ -32,10 +31,6 @@ public class Background : MonoBehaviour
             }
             score += Time.deltaTime * 5f;
             scoreText.text = Mathf.Round(score).ToString() + " m";
-        }
-        else
-        {
-            SceneManager.LoadScene("DeadScene");
         }
     }
 }

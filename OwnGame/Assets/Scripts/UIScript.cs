@@ -8,6 +8,10 @@ public class UIScript : MonoBehaviour
     GameObject[] pauseObjects;
     public float PreviousTime = 0;
 
+    public JetpackScript JetpackScript;
+    public CollectScript CollectScript;
+    public BackgroundSoundScript BackgroundSoundScript;
+
     void Start()
     {
         pauseObjects = GameObject.FindGameObjectsWithTag("Pause");
@@ -24,6 +28,9 @@ public class UIScript : MonoBehaviour
         {
             if (PreviousTime == 0)
             {
+                BackgroundSoundScript.Pause();
+                JetpackScript.Pause();
+                CollectScript.Pause();
                 PreviousTime = Time.timeScale;
                 Time.timeScale = 0;
                 foreach (GameObject g in pauseObjects)
@@ -33,6 +40,9 @@ public class UIScript : MonoBehaviour
             }
             else
             {
+                BackgroundSoundScript.UnPause();
+                JetpackScript.UnPause();
+                CollectScript.UnPause();
                 Time.timeScale = 0;
                 Time.timeScale += PreviousTime;
                 PreviousTime = 0;
