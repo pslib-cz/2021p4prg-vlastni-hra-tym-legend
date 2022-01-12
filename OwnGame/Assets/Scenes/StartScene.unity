@@ -386,6 +386,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PreviousTime: 0
+  JetpackScript: {fileID: 0}
+  CollectScript: {fileID: 0}
+  BackgroundSoundScript: {fileID: 0}
 --- !u!1 &554410550
 GameObject:
   m_ObjectHideFlags: 0
@@ -550,7 +553,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
